@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f172a;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    transition: all 0.5s ease;
+}
+
+.envelope-box {
+    position: relative;
+    width: 320px;
+    height: 210px;
+    background: linear-gradient(135deg, #78471b, #522e0e);
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 120px solid #8e5522; /* Warna lipatan sedikit lebih terang */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    z-index: 3;
+}
+
+.env-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid #5a3311;
+    border-right: 160px solid #5a3311;
+    border-bottom: 110px solid #43240a;
+    border-radius: 0 0 8px 8px;
+    z-index: 2;
+}
+
+.env-seal {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 54px;
+    height: 54px;
+    background: radial-gradient(circle, #b91c1c 0%, #7f1d1d 100%);
+    border-radius: 50%;
+    border: 2px dashed #991b1b; /* Garis stempel */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.6), inset 0 0 8px rgba(255, 255, 255, 0.3);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fef2f2;
+    font-size: 1.2rem;
+}
+
+.btn-open {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    border: 1px solid #f59e0b;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-open:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(180, 83, 9, 0.6);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.letter-section {
+    display: none;
+    width: 100%;
+    position: relative;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    z-index: 2;
+}
+
+.polaroid-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.polaroid-card {
+    background: #ffffff;
+    padding: 10px 10px 12px 10px;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 170px;
+    text-align: center;
+}
+
+.polaroid-card .img-box {
+    width: 100%;
+    height: 190px;
+    background: #f1f5f9;
+    overflow: hidden;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.polaroid-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center 20%;
+    background-color: #000;
+}
+
+.polaroid-card .caption {
+    font-family: 'Caveat', cursive;
+    color: #334155;
+    font-size: 1.3rem;
+    margin-top: 6px;
+}
+
+.message-card {
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.paper-texture {
+    background: #fdfbf7;
+    color: #1e293b;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(217, 119, 6, 0.1);
+    border-left: 5px solid #d97706;
+}
+
+.message-text {
+    line-height: 1.8;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+.text-danger {
+    color: #ef4444;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-back {
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-back:hover {
+    background: #475569;
+}
+
+.btn-continue {
+    flex: 1;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 18px rgba(180, 83, 9, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-continue:hover {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    transform: scale(1.02);
+}
+
+.floating-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    color: #f43f5e;
+    opacity: 0.7;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* Galeri Polaroid Menjadi Baris Menumpuk */
+    .polaroid-gallery {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .polaroid-card {
+        width: 30%;
+        min-width: 105px;
+        padding: 6px 6px 8px 6px;
+    }
+
+    .polaroid-card .img-box {
+        height: 130px;
+    }
+
+    .polaroid-card .caption {
+        font-size: 0.95rem;
+    }
+
+    .message-card {
+        width: 100%;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+    }
+}
